@@ -39,19 +39,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
-        uses: actions/create-github-app-token@31c86eb3b33c9b601a1f60f98dcbfd1d70f379b4 # v1
+        uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1
         id: app-token
         with:
           app-id: "${{ secrets.BOT_APP_ID }}"
           private-key: "${{ secrets.BOT_APP_PRIV_KEY }}"
 
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
         with:
           token: "${{ steps.app-token.outputs.token }}"
 
       - name: Renovate
-        uses: renovatebot/github-action@b266b24b144602ed4f512f0773009d026722f4cc # v40.2.6
+        uses: renovatebot/github-action@b9486682a19fe4ea2dd1263c11b4e0c1fe1838fe # v40.3.2
         with:
           configurationFile: .github/renovate.json5
           token: "${{ steps.app-token.outputs.token }}"
